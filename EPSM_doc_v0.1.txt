@@ -16,15 +16,15 @@ http://www.nemesis.hacking-cult.org/MegaDrive/Documentation/YM2608J%20Translated
 Some excerpts taken from the NESdev wiki, notably the Sunsoft 5B registers (SSG is the same)
 
             $C000/$401C, $E000/$401D (A1 = 0)     $C002/$401E, $E002/$401F (A1 = 1)
-            ---------------------                 ---------------------
+            ---------------------                     ---------------------
 $00 - $0F   |   SSG             |	    $00 - $10 |   ADPCM*          |
             ---------------------       	      ---------------------
-$10 - $1F   |   Rhythm          |       	  	  |                   |
-            ---------------------                 ---------------------
-$20 - $2F   |   Common FM       |           	  |                   |
-            ---------------------           	  ---------------------
-$30 - $B6   |   FM Ch 1 - 3     |           	  |   FM Ch 4 - 6     |
-            ---------------------           	  ---------------------
+$10 - $1F   |   Rhythm          |       	      |                   |
+            ---------------------                     ---------------------
+$20 - $2F   |   Common FM       |           	      |                   |
+            ---------------------           	      ---------------------
+$30 - $B6   |   FM Ch 1 - 3     |           	      |   FM Ch 4 - 6     |
+            ---------------------           	      ---------------------
 * Not Present on the YMF288/EPSM
 
 ------------------------------------------------------------------------------------------
@@ -338,14 +338,14 @@ IRQ/TIMER OPERATION - Assuming EPSM clock is 3.56MHz ---------------------------
 	Register $27:
 		mmBA BABA
 		  || ||++- Timer Run 
-		  || ||	    0 = Timer Stop
+		  || ||	        0 = Timer Stop
 		  || ||		1 = Timer Start
   		  || ++--- Timer IRQ Enable
 		  ||	   	0 = Timer cycles without firing IRQ 
 		  ||	   	1 = Timer overflow fires IRQ
  		  ++------ Timer IRQ Acknowledge
-			   		0 = No effect
-			   		1 = Clears IRQ flag
+			        0 = No effect
+			   	1 = Clears IRQ flag
 
 ________________________________________________________________________________________________
 
