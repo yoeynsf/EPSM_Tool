@@ -44,6 +44,9 @@ In order to prevent stray writes to the NES's internal registers, the data ports
  **`Loop`** - Used to keep the patch playing while you edit parameters. Works in conjunction with `Rate`and `Note.` toggles with `A + L/R` 
  
  **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals (C1-B4). A dedicated MIDI cartridge for the tool is planned, allowing for 6-channel playback of patches in real time (not constrained to a scale). 
+ 
+ - `A + Left/Right` - Increment/Decrement by note
+ - `A + Up/Down` - Increment/Decrement by octave
               
 ## Special Thanks
 
