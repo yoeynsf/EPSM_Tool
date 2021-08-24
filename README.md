@@ -6,9 +6,19 @@ of the YMF288/YM2608, mainly with the EPSM in mind and it's functionality with t
 ## Usage
 The parameters are styled after Bambootracker's patch editor. 
 
+## Main Editor
+
+`A + Up/Down` - Increment/Decrement the high nibble by 1
+
+`A + Left/Right` - Increment/Decrement the low nibble by 1 
+
+If the parameter is only a single nibble, then `A + Up/Down` does't apply. 
+
 ## **Data Ports**
 
-`A + Up/Down` - 
+`A + Up/Down` - Increment/Decrement the MSB by 1
+
+`A + Left/Right` - Increment/Decrement the LSB by 1 
 
 Used to control where the NES sends data, defaulting to:
 ```
@@ -31,7 +41,7 @@ $401F - Data where A1 = 1
  
  **`Loop`** - Used to keep the patch playing while you edit parameters. Works in conjunction with `Rate`and `Note.` toggles with `A + L/R` 
  
- **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals (C1-B4). A dedicated MIDI cartridge with the tool is planned, allowing for 6-channel playback of patches in real time. 
+ **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals (C1-B4). A dedicated MIDI cartridge for the tool is planned, allowing for 6-channel playback of patches in real time. 
               
 ## Special Thanks
 
