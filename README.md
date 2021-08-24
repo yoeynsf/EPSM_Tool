@@ -8,6 +8,8 @@ The parameters are styled after Bambootracker's patch editor.
 
 ## **Data Ports**
 
+`A + Up/Down` - 
+
 Used to control where the NES sends data, defaulting to:
 ```
 $C000 - Address where A1 = 0
@@ -27,8 +29,13 @@ $401F - Data where A1 = 1
 
  **`Rate`** - Half-seconds in between  `Key On` commands and `Key Off` commands. 
  
- **`Loop`** - Used to keep the patch playing while you edit parameters. Works in conjunction with `Rate`and `Note`
+ **`Loop`** - Used to keep the patch playing while you edit parameters. Works in conjunction with `Rate`and `Note.` toggles with `A + L/R` 
  
- **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals. A dedicated MIDI cartridge with the tool is planned, allowing for 6-channel playback of patches in real time. 
+ **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals (C1-B4). A dedicated MIDI cartridge with the tool is planned, allowing for 6-channel playback of patches in real time. 
               
- 
+## Special Thanks
+
+ - Perkka, for supplying the EPSM 
+ - zeta0134, for putting up with my code and helping out with the pointer system  
+ - Lidnariq, for their help with the doc and somehow answering every question of mine
+ - Lockster and Bluemarf.m, for being sounding boards for my ideas 
