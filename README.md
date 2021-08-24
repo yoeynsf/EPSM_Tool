@@ -35,13 +35,15 @@ $401E - Address where A1 = 1
 $401F - Data where A1 = 1
 ```
 
+In order to prevent stray writes to the NES's internal registers, the data ports have a lowest value of `$4018`.
+
 ## **Play**
 
  **`Rate`** - Half-seconds in between  `Key On` commands and `Key Off` commands. 
  
  **`Loop`** - Used to keep the patch playing while you edit parameters. Works in conjunction with `Rate`and `Note.` toggles with `A + L/R` 
  
- **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals (C1-B4). A dedicated MIDI cartridge for the tool is planned, allowing for 6-channel playback of patches in real time. 
+ **`Note`** - Pitch to play patch at. Currently only scales in the key of C Major, no accidentals (C1-B4). A dedicated MIDI cartridge for the tool is planned, allowing for 6-channel playback of patches in real time (not constrained to a scale). 
               
 ## Special Thanks
 
