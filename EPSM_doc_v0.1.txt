@@ -15,7 +15,7 @@ http://www.nemesis.hacking-cult.org/MegaDrive/Documentation/YM2608J%20Translated
  
 Some excerpts taken from the NESdev wiki, notably the Sunsoft 5B registers (SSG is the same)
 
-            $C000/$401C, $E000/$401D (A1 = 0)     $C002/$401E, $E002/$401F (A1 = 1)
+            $C000/$401C, $E000/$401D (A1 = 0)         $C002/$401E, $E002/$401F (A1 = 1)
             ---------------------                     ---------------------
 $00 - $0F   |   SSG             |	    $00 - $10 |   ADPCM*          |
             ---------------------       	      ---------------------
@@ -250,7 +250,7 @@ $86                                                                 CH 3/6 Opera
 $8A                                                                 CH 3/6 Operator 2
 $8E                                                                 CH 3/6 Operator 4
 --
-$90         ---- eeee   SSG-Type Envelope Control (e)               CH 1/4 Operator 1
+$90         ---- Eeee   SSG Envelope Enable (E), select (e)         CH 1/4 Operator 1
 $94                                                                 CH 1/4 Operator 3
 $98                                                                 CH 1/4 Operator 2
 $9C                                                                 CH 1/4 Operator 4
@@ -272,7 +272,7 @@ $B1                                                                 CH 2/5
 $B2                                                                 CH 3/6
 ---------------------------- LFO PARAMETERS -------------------------------------------
 Register    Bitfield    Description
-$22         ---- rrrr   LFO Oscillation Rate (r)
+$22         ---- Errr   LFO Enable (E), LFO Oscillation Rate (r)
 $B4         LRaa -PPP   Left (L), Right (R), AMS (a), PMS (P)       CH 1/4
 $B5                                                                 CH 2/5
 $B6                                                                 CH 3/6
@@ -291,10 +291,10 @@ After Writing Data
 
 	Part        Address     Waiting Time
 	FM          $21-$9E     42 cycles
-            	$A0-$B6     24 cycles
+            	    $A0-$B6     24 cycles
 	SSG         $00-$0F     0 cycles
 	Rhythm      $10         288 cycles
-      	    	$11-$1D     9 cycles
+      	    	    $11-$1D     9 cycles
 
 ________________________________________________________________________________________________
 REGISTER DETAILS -------------------------------------------------------------------------------
@@ -344,15 +344,7 @@ IRQ/TIMER OPERATION - Assuming EPSM clock is 3.56MHz ---------------------------
 		  ||	   	0 = Timer cycles without firing IRQ 
 		  ||	   	1 = Timer overflow fires IRQ
  		  ++------ Timer IRQ Acknowledge
-			        0 = No effect
+			   	0 = No effect
 			   	1 = Clears IRQ flag
 
 ________________________________________________________________________________________________
-
-
-
-
-
-
-
-
