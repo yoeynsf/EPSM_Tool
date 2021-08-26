@@ -30,17 +30,35 @@ pointer_position:				.res 1
 pointer_X_coord:				.res 1
 pointer_Y_coord:				.res 1
 temp:							.res 1
+EPSM_ADDR0_buf:					.res 2
+EPSM_DATA0_buf:					.res 2
+EPSM_ADDR1_buf:					.res 2
+EPSM_DATA1_buf:					.res 2
+nametable_pointer:				.res 2
+loop_timer:						.res 1
 
 .segment "INTERNALRAM"
 bgpalettes:						.res 16
 sprpalettes:					.res 16
+
+sector_1_table:					.res 44				
+data_ports:						.res 4
+sector_2_table:					.res 12
+
+
+
+
 
 .segment "BANK0"
 	.include "src/init.asm"
 	.include "src/main.asm"
 	.include "src/nmi.asm"
 	.include "src/irq.asm"
+	.include "src/edit_mode.asm"
 	.include "src/subroutines.asm"
+	.include "src/nametable.asm"
+	.include "src/registerwrite.asm"
+	.include "src/play.asm"
 	.include "src/sectors.asm"
 	.include "src/rodata.asm"
 
