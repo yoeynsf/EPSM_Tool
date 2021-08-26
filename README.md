@@ -6,7 +6,7 @@ of the YMF288/YM2608, mainly with the EPSM in mind and it's functionality with t
 Assembles with CA65 and LD65.
 
 ## Usage
-The parameters are styled after Bambootracker's patch editor.  
+The parameters are styled after Bambootracker's patch editor.  it is
 
 ## Main Editor
 
@@ -43,7 +43,7 @@ $401E - Address where A1 = 1
 $401F - Data where A1 = 1
 ```
 
-In order to prevent stray writes to the NES's internal registers, the data ports have a lowest value of `$4018`.
+In order to prevent stray writes to the NES's internal registers, the data ports have a lowest value of `$4018`. it is **VERY IMPORTANT** to note that if you need to change the addresses, do so first thing at boot, else all your edited parameters with not be carried over. 
 
 ## **Play**
 
