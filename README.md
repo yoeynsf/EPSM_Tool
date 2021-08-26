@@ -1,7 +1,9 @@
 # EPSM Tool 
 
 A ROM for the NES built for use with the [**Expansion Port Sound Module**](https://github.com/Perkka2/EPSM). Also included is my personal documentation
-of the YMF288/YM2608, mainly with the EPSM in mind and it's functionality with the NTSC NES. 
+of the YMF288/YM2608, mainly with the EPSM in mind and it's functionality with the NTSC NES.
+
+Assembles with CA65 and LD65.
 
 ## Usage
 The parameters are styled after Bambootracker's patch editor.  
