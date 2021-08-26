@@ -67,4 +67,4 @@ Note that a Total Level (`TL`, aka Volume) of `00` means an operator is at full 
  - Perkka, for supplying the EPSM 
  - zeta0134, for putting up with my code and helping out with the pointer system  
  - Lidnariq, for their help with the doc and somehow answering every question of mine
- - Lockster and Bluemarf.m, for being sounding boards for my ideas 
+ - Lockster, for being a sounding board for my ideas
