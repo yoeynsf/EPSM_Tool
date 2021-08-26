@@ -80,6 +80,67 @@ CLEARMEM:
 	LDA #>nametable
 	STA pointer + 1
 	JSR LoadNametable
+	
+	LDA #$C0
+    STA EPSM_ADDR0_buf + 1
+    STA EPSM_ADDR1_buf + 1
+    LDA #$02
+    STA EPSM_ADDR1_buf 
+    LDA #$E0
+    STA EPSM_DATA0_buf + 1
+    STA EPSM_DATA1_buf + 1
+    LDA #$02
+    STA EPSM_DATA1_buf 
+
+	LDA #$10
+	LDY #0 
+	LDX #$10
+.proc init_EPSM			; preset the registers we care about to 0
+	STA (EPSM_ADDR0_buf), Y
+	PHA 
+	LDA #$00
+	STA (EPSM_DATA0_buf), Y
+	PLA 
+	INX 
+	TXA 
+	CPX #$9F
+	BNE init_EPSM
+	
+	LDA #$29 				; enable OPNA mode
+	STA (EPSM_ADDR0_buf), Y
+	LDA #$80
+	STA (EPSM_DATA0_buf), Y
+	
+	LDA #$B4				; enable L/R stereo for channel 0
+	STA (EPSM_ADDR0_buf), Y
+	LDA #$C0
+	STA (EPSM_DATA0_buf), Y
+	
+	LDA #$A4				; set pitch to C-5
+	STA (EPSM_ADDR0_buf), Y
+	LDA pitch_table_1 + $38
+	STA (EPSM_DATA0_buf), Y
+
+	LDA #$A0 
+	STA (EPSM_ADDR0_buf), Y
+	LDA pitch_table_1 + $39
+	STA (EPSM_DATA0_buf), Y
+
+	LDA #$A4				
+	STA (EPSM_ADDR0_buf), Y
+	LDA pitch_table_2 + $38
+	STA (EPSM_DATA0_buf), Y
+
+	LDA #$A0 
+	STA (EPSM_ADDR0_buf), Y
+	LDA pitch_table_2 + $39
+	STA (EPSM_DATA0_buf), Y
+.endproc
+
+	LDA #NOTE_C5
+	STA sector_1_table + $3B
+
+; this is gonna bite me in the butt when i have to write the MIDI implementation
 
 ;everything is loaded, now to enable drawing
 	

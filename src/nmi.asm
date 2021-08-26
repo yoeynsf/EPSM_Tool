@@ -10,20 +10,20 @@ NMI:
 	LDA #$02    		;copy sprite data from $0200 into PPU memory
     STA OAMDMA
 
-    LDA #$24            ; Timer A Hi
-    STA EPSM_ADDR0
-    LDA #$3F
-    STA EPSM_DATA0
+;    LDA #$24            ; Timer A Hi
+;    STA EPSM_ADDR0
+;    LDA #$3F
+;    STA EPSM_DATA0
     
-    LDA #$25            ; Timer A Lo
-    STA EPSM_ADDR0
-    LDA #%00000011
-    STA EPSM_DATA0
+;    LDA #$25            ; Timer A Lo
+;    STA EPSM_ADDR0
+;    LDA #%00000011
+;    STA EPSM_DATA0
 
-    LDA #$27            ; Enable Timer and IRQ
-    STA EPSM_ADDR0
-    LDA #%00001010
-    STA EPSM_DATA0
+;    LDA #$27            ; Enable Timer and IRQ
+;    STA EPSM_ADDR0
+;    LDA #%00001010
+;    STA EPSM_DATA0
 	
 	JSR LoadPalettes
 
@@ -51,10 +51,24 @@ Packbytes:
     AND joystatus       
     STA held_buttons    ; move old inputs to A and find out which ones have been held. will use for menus
 
+    JSR write_nametable
+    JSR write_registers
+
+
     LDA PPUSTATUS  		;the next write to $2005 will be the X scroll
 	LDA #$00
     STA PPUSCROLL  		
 	STA PPUSCROLL
+
+    LDA Flags			; decrement timer, *if* it is set
+	AND #TIMER_FLAG
+	BEQ :+
+	DEC loop_timer
+	BNE :+
+	LDA Flags			; if timer has run out, clear the flag
+	EOR #%00000001
+	STA Flags
+:
 
 	INC framecounter  
 	PLA

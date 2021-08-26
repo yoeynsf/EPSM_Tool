@@ -11,7 +11,7 @@ IRQ:
     
     LDA #$27        ; Acknowledge and disable IRQ
     STA EPSM_ADDR0
-    LDA #$10
+    LDA #%00110000
     STA EPSM_DATA0
 
 	PLA

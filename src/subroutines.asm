@@ -1,37 +1,3 @@
-.proc edit_mode_check
-    LDA held_buttons
-    AND #KEY_A
-    BNE :+
-    LDA joystatus
-    AND #KEY_A
-    BEQ remove_sprite
-    LDA Flags
-    EOR #EDIT_FLAG
-    STA Flags
-:
-insert_sprite:    
-    LDA #<edit_sprite
-    STA pointer
-    LDA #>edit_sprite
-    STA pointer + 1
-
-    LDA pointer_Xpos
-    CLC 
-    ADC #8
-    STA TempX
-    LDA pointer_Ypos
-    STA TempY
-    JSR LoadSprites
-    JMP :+
-remove_sprite:
-    LDA Flags       ; clear edit flag
-    AND #%11111011
-    STA Flags
-:
-    RTS
-.endproc
-
-
 .proc move_pointer
     LDA Flags
     AND #EDIT_FLAG
@@ -106,7 +72,7 @@ Down:
     AND #KEY_D
     BEQ no_down
     LDA pointer_Y_coord
-    CMP #13
+    CMP #14
     BEQ no_down
     INC pointer_Y_coord
     LDA pointer_position
@@ -175,6 +141,19 @@ nothing:
     RTS
 .endproc
 
+.proc load_algorithm_sprite
+    LDA #$28
+    STA TempX
+    LDA #$BC
+    STA TempY
+    LDY sector_2_table          ; gets us the current algorithm value
+    LDA algorithm_table_low, Y 
+    STA pointer 
+    LDA algorithm_table_high, Y 
+    STA pointer + 1
+    JSR LoadSprites
+    RTS 
+.endproc
 
 
 LoadPalettes:
